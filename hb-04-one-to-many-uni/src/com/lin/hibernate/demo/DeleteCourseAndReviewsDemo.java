@@ -9,7 +9,7 @@ import com.lin.hibernate.demo.entity.Instructor;
 import com.lin.hibernate.demo.entity.InstructorDetail;
 import com.lin.hibernate.demo.entity.Review;
 
-public class GetCourseAndReviewsDemo {
+public class DeleteCourseAndReviewsDemo {
 
 	public static void main(String[] args) {
 
@@ -33,14 +33,15 @@ public class GetCourseAndReviewsDemo {
 			int theId = 10;
 			Course tempCourse = session.get(Course.class, theId);
 			
-			System.out.println("Instructor: " + tempCourse);
-			System.out.println("Course: " + tempCourse.getReviews());
+			System.out.println("Course: " + tempCourse);
+			System.out.println("Reviews: " + tempCourse.getReviews());
 			
+			System.out.println("Deleting Course and reviews... ");
+
+			session.delete(tempCourse);
 						
 			session.getTransaction().commit();
 			System.out.println("Done!");
-
-
 			
 		} 
 		finally {
