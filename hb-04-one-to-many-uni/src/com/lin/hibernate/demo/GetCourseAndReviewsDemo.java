@@ -7,6 +7,7 @@ import org.hibernate.cfg.Configuration;
 import com.lin.hibernate.demo.entity.Course;
 import com.lin.hibernate.demo.entity.Instructor;
 import com.lin.hibernate.demo.entity.InstructorDetail;
+import com.lin.hibernate.demo.entity.Review;
 
 public class GetCourseAndReviewsDemo {
 
@@ -18,6 +19,7 @@ public class GetCourseAndReviewsDemo {
 				                 .addAnnotatedClass(Instructor.class)
 				                 .addAnnotatedClass(InstructorDetail.class)
 				                 .addAnnotatedClass(Course.class)
+				                 .addAnnotatedClass(Review.class)
 				                 .buildSessionFactory();
 		
 		// create session
@@ -28,16 +30,17 @@ public class GetCourseAndReviewsDemo {
 			session.beginTransaction();
 			System.out.println("find Course object...");
 
-			int theId = 1;
-			Instructor tempInstructor = session.get(Instructor.class, theId);
-			System.out.println("Instructor: " + tempInstructor);
+			int theId = 10;
+			Course tempCourse = session.get(Course.class, theId);
+			System.out.println("Instructor: " + tempCourse);
 
 			
-			System.out.println("Course: " + tempInstructor.getCourses());
+			System.out.println("Course: " + tempCourse.getReviews());
 			
 						
 			session.getTransaction().commit();
 			System.out.println("Done!");
+
 
 			
 		} 
